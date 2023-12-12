@@ -8,20 +8,19 @@ update this file to implement the following already declared methods:
 """
 from random import randint
 
-class FamilyStructure:
-    def __init__(self, last_name):
-        self.last_name = last_name
-
-        # example list of members
-        self._members = []
-
+class FamilyStructure:  #1. we define our class which will represent a family structure object
+    def __init__(self, last_name): #2. we initialize it with the constructor method "__init__", like saying "to start creating a FamilyStructure we first need the FamilyStructure itself (self) and whatever else we want to add as a parameter (last_name)
+        self.last_name = last_name #3.we define the attributes that my FamilyStructure will have, so I'm saying: this FamilyStructure has a last name of X (the last_name that I will pass). So this attribute will store the family's last name.
+        self._members = [] # this list stores family members
+   
+    #4. here we define the methods we want to create and use in our object
     # read-only: Use this method to generate random members ID's when adding members into the list
     def _generateId(self):
         return randint(0, 99999999)
 
     def add_member(self, member):
         # fill this method and update the return
-        pass
+        self._members.append(member)
 
     def delete_member(self, id):
         # fill this method and update the return

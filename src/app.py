@@ -38,16 +38,17 @@ def get_members():
     return jsonify(response_body), 200   # jsonify transforms our python code into JSON so our front can receive it. Tb enviamos el codigo 200 (ok)
 
 #### POST ####
-@app.route('/members', methods=['POST'])
+@app.route('/member', methods=['POST'])
 def handle_add_members():
-    mum_kate = {                    # we create the dictionary with the family member we want to add called num_kate. This is the response we will see in Postman
-        "first_name": "Kate",
-        "last_name": last_name,
-        "age": 35,
-        "lucky_numbers": [5, 7, 11],
-    }
+    new_family_member = request.json # As we want to add 3 family members, then is best to send the request from Postman, writing the the dictionary (as the one below for kate) in the body, and receive that request here as json. We create for 1 member and post, another member and post, and so on.
+
+    #kate = {                    # initially as test we create the dictionary with the family member kate. We test in Postman and we see the same.
+        #"first_name": "Kate",
+        #"last_name": last_name,
+        #"age": 35,
+        #"lucky_numbers": [5, 7, 11],}
     
-    members = jackson_family.add_member(mum_kate) # this is the method for adding a family member to the members list. We pass mum_kate as an argument, so now the list will contain this member
+    members = jackson_family.add_member(new_family_member) # this is the method for adding a new family member to the list. 
     response_body = {
         "family": members
     }
